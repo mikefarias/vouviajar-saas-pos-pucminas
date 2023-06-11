@@ -14,23 +14,12 @@ namespace VouViajar.Excursoes.Application.Features.Commands.CadastrarExcursao
         }
         public Task<Unit> Handle(CadastrarExcursaoCommand request, CancellationToken cancellationToken)
         {
-            Excursao excursao = new Excursao
-            {
-                Nome = request.Nome,
-                Resumo = request.Resumo,
-                TotalVagas = request.TotalVagas,
-                ValorVaga = request.ValorVaga,
-                DataInicio = request.DataInicio,
-                DataFim = request.DataFim,
-                Arquivo = request.Arquivo,
-                NomeArquivo = request.NomeArquivo,
-                CadastradoEm = DateTime.Now,
-                OrigemID = request.Origem,
-                DestinoID = request.Destino,
-                TipoID = request.Tipo.GetHashCode(),
-                SituacaoID = request.Situacao.GetHashCode()
-            };
+            Excursao excursao = 
+                new(request.AgenciaID, request.Nome, request.Resumo, request.DataInicio, request.DataFim,
+                request.TotalVagas, request.ValorVaga, request.NomeArquivo, request.Arquivo, DateTime.Now,
+                request.Origem, request.Destino, request.Situacao.GetHashCode(), request.Tipo.GetHashCode());
 
+   
             _unitOfWorkExcursao.Context.Excursao.Add(excursao);
             _unitOfWorkExcursao.Save();
 

@@ -2,7 +2,7 @@
 
 namespace VouViajar.Auth.Domain.Services.ViewModel
 {
-    public class RegistrarUsuarioViewModel
+    public class RegistrarUsuarioAgenciaViewModel
     {
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [EmailAddress(ErrorMessage = "O campo {0} está em formato inválido")]
@@ -13,9 +13,10 @@ namespace VouViajar.Auth.Domain.Services.ViewModel
         public required string Password { get; set; }
 
         [Compare("Password", ErrorMessage = "As senhas não conferem.")]
-        public required string ConfirmPassword { get; set; }
+        public required string ConfirmPassword { get; set; }        
+        public required string Nome { get; set; }
+        public int Cadastrar { get; set; }
 
-        public required TipoUsuario TipoUsuario { get; set; }
     }
 
     public class UserTokenViewModel

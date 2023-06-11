@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VouViajar.Excursoes", "VouV
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VouViajar.Catalogo", "VouViajar.Catalogo\VouViajar.Catalogo.csproj", "{FC6D3503-F068-4C34-9B4F-A227949A7431}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VouViajar.Conta", "VouViajar.Conta\VouViajar.Conta.csproj", "{11EE1F2C-6EAC-41E0-A100-849ED14363F7}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VouViajar.Servico", "VouViajar.Servico\VouViajar.Servico.csproj", "{C58AFF4C-98C8-4879-A8CA-AC94F328FF18}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VouViajar.Venda", "VouViajar.Venda\VouViajar.Venda.csproj", "{92073D97-8A70-454E-AEFB-CB8034947CFC}"
@@ -39,10 +37,6 @@ Global
 		{FC6D3503-F068-4C34-9B4F-A227949A7431}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC6D3503-F068-4C34-9B4F-A227949A7431}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC6D3503-F068-4C34-9B4F-A227949A7431}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11EE1F2C-6EAC-41E0-A100-849ED14363F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11EE1F2C-6EAC-41E0-A100-849ED14363F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11EE1F2C-6EAC-41E0-A100-849ED14363F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11EE1F2C-6EAC-41E0-A100-849ED14363F7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C58AFF4C-98C8-4879-A8CA-AC94F328FF18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C58AFF4C-98C8-4879-A8CA-AC94F328FF18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C58AFF4C-98C8-4879-A8CA-AC94F328FF18}.Release|Any CPU.ActiveCfg = Release|Any CPU

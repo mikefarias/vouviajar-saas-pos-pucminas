@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VouViajar.Excursoes.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using VouViajar.Excursoes.Infrastructure.Persistence;
 namespace VouViajar.Excursoes.Migrations
 {
     [DbContext(typeof(ExcursaoDbContext))]
-    partial class ExcursaoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230611180514_atualizaExcursao")]
+    partial class atualizaExcursao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

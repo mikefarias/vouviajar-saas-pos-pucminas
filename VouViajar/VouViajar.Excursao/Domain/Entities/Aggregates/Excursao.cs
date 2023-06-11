@@ -1,15 +1,14 @@
-﻿using VouViajar.Excursoes.Domain.Enums;
+﻿using VouViajar.Auth.Domain.Entities.Aggregates;
 
 namespace VouViajar.Excursoes.Domain.Entities.Aggregates
 {
     public class Excursao
     {
-        public Excursao()
+        public Excursao( int agenciaID, string nome, string resumo, DateTime dataInicio, DateTime dataFim, int totalVagas, 
+                        decimal valorVaga, string nomeArquivo, string arquivo, DateTime cadastradoEm, int origemID, 
+                        int destinoID, int situacaoID, int tipoID)
         {
-
-        }
-        public Excursao(int agenciaID, string nome, string resumo, DateTime dataInicio, DateTime dataFim, int totalVagas, decimal valorVaga, string nomeArquivo, string arquivo, DateTime cadastradoEm, int origemID, int destinoID, int situacaoID, int tipoID)
-        {
+            AgenciaID = agenciaID;
             Nome = nome;
             Resumo = resumo;
             DataInicio = dataInicio;
@@ -18,15 +17,16 @@ namespace VouViajar.Excursoes.Domain.Entities.Aggregates
             ValorVaga = valorVaga;
             NomeArquivo = nomeArquivo;
             Arquivo = arquivo;
-            CadastradoEm = DateTime.Now;
+            CadastradoEm = cadastradoEm;
             OrigemID = origemID;
             DestinoID = destinoID;
-            SituacaoID = EnumSituacaoExcursao.CADASTRADO.GetHashCode();
+            SituacaoID = situacaoID;
             TipoID = tipoID;
         }
 
         public int ExcursaoID { get; set; }
         public int AgenciaID { get; set; }
+        public virtual Agencia Agencia { get; set; }
         public string Nome { get; set; }
         public string Resumo { get; set; }
         public DateTime DataInicio { get; set; }

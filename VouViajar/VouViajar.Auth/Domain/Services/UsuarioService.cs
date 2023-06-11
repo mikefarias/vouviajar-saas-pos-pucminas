@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using VouViajar.Auth.Application.Extensions;
-using VouViajar.Auth.Application.Features.RegistrarUuario;
 using VouViajar.Auth.Domain.Entities.Aggregates;
 using VouViajar.Auth.Domain.Services.Interfaces;
 using VouViajar.Auth.Domain.Services.ViewModel;
@@ -27,25 +27,27 @@ namespace VouViajar.Auth.Domain.Services
             _appSettings = appSettings.Value ?? throw new ArgumentNullException(nameof(appSettings));
         }
 
-        public async Task<LoginResponseViewModel> RegistrarUsuarioAsync(RegistrarUsuarioCommand request)
+        public async Task<string> RegistrarUsuarioAsync(string userName, string email, string password, bool emailConfirmed, TipoUsuario tipoUsuario)
         {
 
             var usuario = new Usuario
             {
-                UserName = request.UserName,
-                Email = request.Email,
-                EmailConfirmed = request.EmailConfirmed
+                UserName = userName,
+                Email = email,
+                EmailConfirmed = emailConfirmed
             };
 
-            var resultUser = await _userManager.CreateAsync(usuario, request.Password);
-
-            await _userManager.AddToRoleAsync(usuario, request.TipoUsuario.ToString());
+            var resultUser = await _userManager.CreateAsync(usuario, password);
 
             if (!resultUser.Succeeded)
                 throw new InvalidOperationException("Erro ao criar registro de usuário.");
+
+            await _userManager.AddClaimAsync(usuario, new Claim(ClaimTypes.Role, tipoUsuario.ToString()));
+            await _userManager.AddToRoleAsync(usuario, tipoUsuario.ToString());
+
             await _signInManager.SignInAsync(usuario, false);
 
-            return await Task.FromResult(await GerarToken(usuario.Email));
+            return await Task.FromResult(usuario.Id);
         }
 
         public async Task<LoginResponseViewModel> LogarUsuarioAsync(string email, string password, bool isPersistent, bool bockoutOnFailure)

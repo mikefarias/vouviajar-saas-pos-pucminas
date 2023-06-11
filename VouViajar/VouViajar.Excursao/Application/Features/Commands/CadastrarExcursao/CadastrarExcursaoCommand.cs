@@ -5,6 +5,8 @@ namespace VouViajar.Excursoes.Application.Features.Commands.CadastrarExcursao
 {
     public class CadastrarExcursaoCommand : IRequest
     {
+     
+        public int AgenciaID { get; set; }
         public required string Nome { get; set; }
 
         public required string Resumo { get; set; }

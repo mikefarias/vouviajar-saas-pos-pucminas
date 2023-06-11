@@ -2,14 +2,14 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VouViajar.Auth.Application.Features.LogarUsuario;
-using VouViajar.Auth.Application.Features.RegistrarUuario;
+using VouViajar.Auth.Application.Features.RegistrarUsuarioAgencia;
 using VouViajar.Auth.Domain.Services.Interfaces;
 using VouViajar.Auth.Domain.Services.ViewModel;
 
 namespace VouViajar.Auth.Application.Controllers
 {
     [AllowAnonymous]
-    [Route("api/auth")]
+    [Route("api/account/register")]
     [ApiController]
     public class AutenticacaoController : BaseController
     {
@@ -21,19 +21,20 @@ namespace VouViajar.Auth.Application.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost("registrar")]
-        public async Task<ActionResult> Registrar(RegistrarUsuarioViewModel registrarUsuario)
+        [HttpPost("agencia")]
+        public async Task<ActionResult> RegistrarAgencia(RegistrarUsuarioAgenciaViewModel registrarUsuarioAgencia)
         {
             if (!ModelState.IsValid) return Retorno(ModelState);
 
-            var retorno = await _mediator.Send(new RegistrarUsuarioCommand
+            var retorno = await _mediator.Send(new RegistrarUsuarioAgenciaCommand
             {
-                UserName = registrarUsuario.Email,
-                Email = registrarUsuario.Email,
+                UserName = registrarUsuarioAgencia.Email,
+                Email = registrarUsuarioAgencia.Email,
                 EmailConfirmed = true,
-                Password = registrarUsuario.Password,
-                ConfirmPassword = registrarUsuario.ConfirmPassword,
-                TipoUsuario = registrarUsuario.TipoUsuario
+                Password = registrarUsuarioAgencia.Password,
+                ConfirmPassword = registrarUsuarioAgencia.ConfirmPassword, 
+                Nome = registrarUsuarioAgencia.Nome, 
+                Cadastur = registrarUsuarioAgencia.Cadastrar
             });
 
             return Retorno(retorno);

@@ -1,9 +1,7 @@
-﻿using VouViajar.Auth.Domain.Entities.Aggregates;
-
-namespace VouViajar.Auth.Domain.Services.Interfaces
+﻿namespace VouViajar.Auth.Domain.Services.Interfaces
 {
     public interface IUsuarioAgenciaService
     {
-        Task<ResponseService> RegistrarAgencia(Usuario usuario);
+        Task<ResponseService> RegistrarAgencia(string usuarioID, string nome, int cadastur);
     }
 }

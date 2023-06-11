@@ -396,3 +396,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+/VouViajar/.vs
+/.vs
+/VouViajar/*/obj
+/VouViajar/*/bin

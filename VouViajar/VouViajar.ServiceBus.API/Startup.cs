@@ -3,6 +3,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using VouViajar.API.Extensions;
 using VouViajar.Auth;
+using VouViajar.Excursoes;
 
 namespace VouViajar.API
 {
@@ -18,6 +19,7 @@ namespace VouViajar.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthModuleRegistrationService(Configuration);
+            services.AddExcursaoModuleRegistrationService();
 
             services.AddHttpClient();
 

@@ -1,6 +1,6 @@
-﻿namespace VouViajar.Excursao
+﻿namespace VouViajar.Excursoes
 {
-    internal class Program
+    public static class Program
     {
         static void Main(string[] args)
         {

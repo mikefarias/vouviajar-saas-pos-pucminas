@@ -16,11 +16,11 @@ namespace VouViajar.Excursoes.Application.Controllers
     [Authorize]
     [Route("api/excursao")]
     [ApiController]
-    public class EventoController : ControllerBase
+    public class ExcursaoController : ControllerBase
     {
 
         private readonly IMediator _mediator;
-        public EventoController(IMediator mediator)
+        public ExcursaoController(IMediator mediator)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
@@ -58,28 +58,28 @@ namespace VouViajar.Excursoes.Application.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.Created)]
         [HttpPut()]
-        public async Task<ActionResult> AtualizarEvento([FromBody] AtualizarExcursaoModel atualizarEventoModel, int id)
+        public async Task<ActionResult> AtualizarExcursao([FromBody] AtualizarExcursaoModel atualizarExcursaoModel, int id)
         {
-            var atualizarEventoCommand = new AtualizarExcursaoCommand()
+            var atualizarExcursaoCommand = new AtualizarExcursaoCommand()
             {
                 ID = id,
-                Nome = atualizarEventoModel.Nome,
-                Resumo = atualizarEventoModel.Resumo,
-                DataInicio = atualizarEventoModel.DataInicio,
-                DataFim = atualizarEventoModel.DataFim,
-                Origem = atualizarEventoModel.Origem,
-                Destino = atualizarEventoModel.Destino,
-                NomeArquivo = atualizarEventoModel.NomeArquivo,
-                Arquivo = atualizarEventoModel.Arquivo,
-                TotalVagas = atualizarEventoModel.TotalVagas,
-                ValorVaga = atualizarEventoModel.ValorVaga,
-                Tipo = atualizarEventoModel.Tipo,
-                Situacao = atualizarEventoModel.Situacao
+                Nome = atualizarExcursaoModel.Nome,
+                Resumo = atualizarExcursaoModel.Resumo,
+                DataInicio = atualizarExcursaoModel.DataInicio,
+                DataFim = atualizarExcursaoModel.DataFim,
+                Origem = atualizarExcursaoModel.Origem,
+                Destino = atualizarExcursaoModel.Destino,
+                NomeArquivo = atualizarExcursaoModel.NomeArquivo,
+                Arquivo = atualizarExcursaoModel.Arquivo,
+                TotalVagas = atualizarExcursaoModel.TotalVagas,
+                ValorVaga = atualizarExcursaoModel.ValorVaga,
+                Tipo = atualizarExcursaoModel.Tipo,
+                Situacao = atualizarExcursaoModel.Situacao
             };
 
-            await _mediator.Send(atualizarEventoCommand);
+            await _mediator.Send(atualizarExcursaoCommand);
 
-            return Ok(atualizarEventoModel);
+            return Ok(atualizarExcursaoModel);
         }
 
         [ProducesResponseType((int)HttpStatusCode.OK)]
@@ -87,14 +87,14 @@ namespace VouViajar.Excursoes.Application.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.Created)]
         [HttpDelete]
-        public async Task<ActionResult> ExcluirEvento(int id)
+        public async Task<ActionResult> ExcluirExcursao(int id)
         {
-            var excluirEventoCommand = new ExcluirExcursaoCommand()
+            var excluirExcursaoCommand = new ExcluirExcursaoCommand()
             {
                 ID = id
             };
 
-            await _mediator.Send(excluirEventoCommand);
+            await _mediator.Send(excluirExcursaoCommand);
 
             return Ok();
         }
@@ -104,14 +104,14 @@ namespace VouViajar.Excursoes.Application.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.Created)]
         [HttpGet("{id}")]
-        public async Task<ActionResult<ObterExcursaoResult>> RecuperarEvento(int id)
+        public async Task<ActionResult<ObterExcursaoResult>> RecuperarExcursao(int id)
         {
-            var eventoResult = await _mediator.Send(new ObterExcursaoQuery
+            var ExcursaoResult = await _mediator.Send(new ObterExcursaoQuery
             {
                 ID = id
             });
 
-            return Ok(eventoResult);
+            return Ok(ExcursaoResult);
         }
 
         [ProducesResponseType((int)HttpStatusCode.OK)]
@@ -121,8 +121,8 @@ namespace VouViajar.Excursoes.Application.Controllers
         [HttpGet]
         public async Task<ActionResult> ObterExcursoes()
         {
-            var eventosResult = await _mediator.Send(new ObterExcursoesQuery());
-            return Ok(eventosResult);
+            var ExcursoesResult = await _mediator.Send(new ObterExcursoesQuery());
+            return Ok(ExcursoesResult);
         }
     }
 }

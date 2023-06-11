@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VouViajar.Auth.Application.Features.LogarUsuario;
 using VouViajar.Auth.Application.Features.RegistrarUuario;
@@ -7,6 +8,7 @@ using VouViajar.Auth.Domain.Services.ViewModel;
 
 namespace VouViajar.Auth.Application.Controllers
 {
+    [AllowAnonymous]
     [Route("api/auth")]
     [ApiController]
     public class AutenticacaoController : BaseController

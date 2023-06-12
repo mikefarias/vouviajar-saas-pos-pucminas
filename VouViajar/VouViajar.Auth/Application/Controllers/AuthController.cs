@@ -34,7 +34,7 @@ namespace VouViajar.Auth.Application.Controllers
                 Password = registrarUsuarioAgencia.Password,
                 ConfirmPassword = registrarUsuarioAgencia.ConfirmPassword, 
                 Nome = registrarUsuarioAgencia.Nome, 
-                Cadastur = registrarUsuarioAgencia.Cadastrar
+                Cadastur = registrarUsuarioAgencia.Cadastur
             });
 
             return Retorno(retorno);

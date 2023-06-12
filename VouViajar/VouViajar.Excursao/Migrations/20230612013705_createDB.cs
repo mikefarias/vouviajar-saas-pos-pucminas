@@ -6,11 +6,14 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace VouViajar.Excursoes.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateDBExcursoes : Migration
+    public partial class createDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "dbo");
+
             migrationBuilder.EnsureSchema(
                 name: "Excursoes");
 
@@ -110,6 +113,28 @@ namespace VouViajar.Excursoes.Migrations
                         principalColumn: "TipoID");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Agencia",
+                schema: "dbo",
+                columns: table => new
+                {
+                    AgenciaID = table.Column<int>(type: "int", nullable: false),
+                    UsuarioID = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Cadastur = table.Column<int>(type: "int", nullable: false),
+                    CadastradoEm = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Agencia", x => x.AgenciaID);
+                    table.ForeignKey(
+                        name: "FK_Agencia_Excursao_AgenciaID",
+                        column: x => x.AgenciaID,
+                        principalSchema: "Excursoes",
+                        principalTable: "Excursao",
+                        principalColumn: "ExcursaoID");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Excursao_DestinoID",
                 schema: "Excursoes",
@@ -142,6 +167,10 @@ namespace VouViajar.Excursoes.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Agencia",
+                schema: "dbo");
+
             migrationBuilder.DropTable(
                 name: "Excursao",
                 schema: "Excursoes");

@@ -15,7 +15,7 @@ namespace VouViajar.Auth.Domain.Services.ViewModel
         [Compare("Password", ErrorMessage = "As senhas não conferem.")]
         public required string ConfirmPassword { get; set; }        
         public required string Nome { get; set; }
-        public int Cadastrar { get; set; }
+        public int Cadastur { get; set; }
 
     }
 

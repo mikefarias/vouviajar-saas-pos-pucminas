@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using VouViajar.Auth.Domain.Entities.Aggregates;
 using VouViajar.Excursoes.Domain.Entities;
 using VouViajar.Excursoes.Domain.Entities.Aggregates;
 
@@ -22,11 +23,14 @@ namespace VouViajar.Excursoes.Infrastructure.Persistence
         {
             base.OnModelCreating(modelBuilder);
 
+
+            modelBuilder.Entity<Agencia>()
+                .ToTable("Agencia", "dbo")
+                .HasKey(ev => new { ev.AgenciaID });
+
             modelBuilder.HasDefaultSchema("Excursoes");
 
-            modelBuilder.Entity<Excursao>()
-                .HasKey(ev => new { ev.ExcursaoID });
-
+            modelBuilder.Entity<Excursao>().HasOne(ev => ev.Agencia).WithOne().HasForeignKey<Agencia>(a => a.AgenciaID).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Excursao>().HasOne(ev => ev.Origem).WithOne().OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Excursao>().HasOne(ev => ev.Destino).WithOne().OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Excursao>().HasOne(ev => ev.Tipo).WithOne().OnDelete(DeleteBehavior.NoAction);

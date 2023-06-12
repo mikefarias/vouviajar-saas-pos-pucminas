@@ -26,10 +26,7 @@ namespace VouViajar.Excursoes.Migrations
             modelBuilder.Entity("VouViajar.Auth.Domain.Entities.Aggregates.Agencia", b =>
                 {
                     b.Property<int>("AgenciaID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AgenciaID"));
 
                     b.Property<DateTime>("CadastradoEm")
                         .HasColumnType("datetime2");
@@ -47,7 +44,7 @@ namespace VouViajar.Excursoes.Migrations
 
                     b.HasKey("AgenciaID");
 
-                    b.ToTable("Agencia", "Excursoes");
+                    b.ToTable("Agencia", "dbo");
                 });
 
             modelBuilder.Entity("VouViajar.Excursoes.Domain.Entities.Aggregates.Excursao", b =>
@@ -106,8 +103,6 @@ namespace VouViajar.Excursoes.Migrations
                         .HasColumnType("decimal");
 
                     b.HasKey("ExcursaoID");
-
-                    b.HasIndex("AgenciaID");
 
                     b.HasIndex("DestinoID")
                         .IsUnique();
@@ -184,14 +179,17 @@ namespace VouViajar.Excursoes.Migrations
                     b.ToTable("Tipo", "Excursoes");
                 });
 
+            modelBuilder.Entity("VouViajar.Auth.Domain.Entities.Aggregates.Agencia", b =>
+                {
+                    b.HasOne("VouViajar.Excursoes.Domain.Entities.Aggregates.Excursao", null)
+                        .WithOne("Agencia")
+                        .HasForeignKey("VouViajar.Auth.Domain.Entities.Aggregates.Agencia", "AgenciaID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("VouViajar.Excursoes.Domain.Entities.Aggregates.Excursao", b =>
                 {
-                    b.HasOne("VouViajar.Auth.Domain.Entities.Aggregates.Agencia", "Agencia")
-                        .WithMany()
-                        .HasForeignKey("AgenciaID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("VouViajar.Excursoes.Domain.Entities.Localidade", "Destino")
                         .WithOne()
                         .HasForeignKey("VouViajar.Excursoes.Domain.Entities.Aggregates.Excursao", "DestinoID")
@@ -216,8 +214,6 @@ namespace VouViajar.Excursoes.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.Navigation("Agencia");
-
                     b.Navigation("Destino");
 
                     b.Navigation("Origem");
@@ -225,6 +221,12 @@ namespace VouViajar.Excursoes.Migrations
                     b.Navigation("Situacao");
 
                     b.Navigation("Tipo");
+                });
+
+            modelBuilder.Entity("VouViajar.Excursoes.Domain.Entities.Aggregates.Excursao", b =>
+                {
+                    b.Navigation("Agencia")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -13,7 +13,7 @@ using VouViajar.Excursoes.Domain.Enums;
 
 namespace VouViajar.Excursoes.Application.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "AGENCIA")]
     [Route("api/excursao")]
     [ApiController]
     public class ExcursaoController : ControllerBase
@@ -34,6 +34,7 @@ namespace VouViajar.Excursoes.Application.Controllers
         {
             var cadastrarExcursaoCommand = new CadastrarExcursaoCommand()
             {
+                AgenciaID = cadastrarExcursaoModel.AgenciaID,
                 Nome = cadastrarExcursaoModel.Nome,
                 Resumo = cadastrarExcursaoModel.Resumo,
                 DataInicio = cadastrarExcursaoModel.DataInicio,

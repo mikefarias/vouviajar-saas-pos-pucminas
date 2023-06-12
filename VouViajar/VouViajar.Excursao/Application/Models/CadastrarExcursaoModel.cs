@@ -4,6 +4,7 @@ namespace VouViajar.Excursoes.Application.Models
 {
     public class CadastrarExcursaoModel
     {
+        public required int AgenciaID { get; set; }
         public required string Nome { get; set; }
 
         public required string Resumo { get; set; }

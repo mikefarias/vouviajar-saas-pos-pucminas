@@ -24,7 +24,7 @@ namespace VouViajar.Excursoes
             #endregion
 
             #region Injections
-            services.AddDbContext<ExcursaoDbContext>(options => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=vouviajar;Integrated Security=True"));
+            services.AddDbContext<ExcursaoDbContext>(options => options.UseSqlServer("Server=vouviajar.database.windows.net;Database=vouviajar;User ID=vouviajar;Password=agoravai1@;Connect Timeout=60;Encrypt=True;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"));
 
             services.AddScoped<IUnitOfWorkExcursao, UnitOfWorkExcursao>();
             services.AddScoped<IExcursaoRepository, ExcursaoRepository>();

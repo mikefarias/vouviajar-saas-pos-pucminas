@@ -429,3 +429,8 @@ FodyWeavers.xsd
 /VouViajar/VouViajar.Venda/obj/Debug/net8.0/VouViajar.Venda.assets.cache
 /VouViajar/VouViajar.Venda/obj/Debug/net8.0/VouViajar.Venda.csproj.FileListAbsolute.txt
 /VouViajar/VouViajar.Venda/obj/VouViajar.Venda.csproj.nuget.dgspec.json
+/VouViajar/VouViajar.Auth/obj/project.assets.json
+/VouViajar/VouViajar.Catalogo/obj/project.assets.json
+/VouViajar/VouViajar.Excursao/obj/project.assets.json
+/VouViajar/VouViajar.Servico/obj/project.assets.json
+/VouViajar/VouViajar.Venda/obj/project.assets.json

@@ -80,18 +80,14 @@ namespace VouViajar.API
 
             app.UseForwardedHeaders();
 
-            if (env.IsDevelopment())
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
             {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "Vou Viajar");
-                    c.RoutePrefix = string.Empty;
-                }
-                );
+                c.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "Vou Viajar");
+                c.RoutePrefix = string.Empty;
             }
-
+            );
 
             app.UseHttpsRedirection();
             app.UseRouting();

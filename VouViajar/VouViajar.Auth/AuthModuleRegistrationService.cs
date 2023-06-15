@@ -27,7 +27,7 @@ namespace VouViajar.Auth
 
             #region Injections
             services.AddIdentityConfiguration(configuration);
-            services.AddDbContext<UsuarioDbContext>(options => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=vouviajar;Integrated Security=True"));
+            services.AddDbContext<UsuarioDbContext>(options => options.UseSqlServer("\"Server=vouviajar.database.windows.net;Database=vouviajar;User ID=vouviajar;Password=agoravai1@;Connect Timeout=60;Encrypt=True;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False\""));
 
             services.AddScoped<INotificador, Notificador>();
 

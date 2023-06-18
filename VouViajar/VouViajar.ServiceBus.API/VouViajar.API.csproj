@@ -22,7 +22,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VouViajar.Auth\VouViajar.Auth.csproj" />
+    <ProjectReference Include="..\VouViajar.Catalogo\VouViajar.Catalogo.csproj" />
     <ProjectReference Include="..\VouViajar.Excursao\VouViajar.Excursoes.csproj" />
+    <ProjectReference Include="..\VouViajar.Servico\VouViajar.Servico.csproj" />
+    <ProjectReference Include="..\VouViajar.Venda\VouViajar.Venda.csproj" />
   </ItemGroup>
 
 </Project>

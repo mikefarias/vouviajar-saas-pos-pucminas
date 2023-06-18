@@ -434,3 +434,8 @@ FodyWeavers.xsd
 /VouViajar/VouViajar.Excursao/obj/project.assets.json
 /VouViajar/VouViajar.Servico/obj/project.assets.json
 /VouViajar/VouViajar.Venda/obj/project.assets.json
+/VouViajar/VouViajar.Catalogo/obj/VouViajar.Catalogo.csproj.nuget.g.targets
+/VouViajar/VouViajar.Servico/obj/VouViajar.Servico.csproj.nuget.g.props
+/VouViajar/VouViajar.Servico/obj/VouViajar.Servico.csproj.nuget.g.targets
+/VouViajar/VouViajar.Venda/obj/VouViajar.Venda.csproj.nuget.g.props
+/VouViajar/VouViajar.Venda/obj/VouViajar.Venda.csproj.nuget.g.targets

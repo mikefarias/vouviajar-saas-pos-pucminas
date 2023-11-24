@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Util.Filter.LogSerilog" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\VouViajar.Auth\VouViajar.Auth.csproj" />
   </ItemGroup>
 

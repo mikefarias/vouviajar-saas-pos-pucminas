@@ -3,6 +3,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using VouViajar.API.Extensions;
 using VouViajar.Auth;
 using VouViajar.Excursoes;
@@ -20,6 +21,9 @@ namespace VouViajar.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddSerilog();
+
             services.AddAuthModuleRegistrationService(Configuration);
             services.AddExcursaoModuleRegistrationService();
 
